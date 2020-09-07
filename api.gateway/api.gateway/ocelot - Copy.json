@@ -1,0 +1,36 @@
+{
+  "ReRoutes": [
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "http",
+      "ServiceName": "UserManagement",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "UpstreamPathTemplate": "/gateway/us/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "ReRouteCaseSensetive": false
+    }
+    //,
+    //{
+    //  "UseServiceDiscovery": true,
+    //  "DownstreamPathTemplate": "/{url}",
+    //  "DownstreamScheme": "http",
+    //  "ServiceName": "ProductServiceRegistry",
+    //  "LoadBalancerOptions": {
+    //    "Type": "LeastConnection"
+    //  },
+    //  "UpstreamPathTemplate": "/gateway/ps/{url}",
+    //  "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
+    //  "ReRouteCaseSensetive": false
+    //}    
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+} 
